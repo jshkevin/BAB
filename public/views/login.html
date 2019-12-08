@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="./login.css">
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <title>Login</title>
+    </head>
+    <body>
+        <h1>BAB</h1>
+        <div class="login_box">
+            <div class="login">
+                <form>
+                    <h1 id=login>Login</h1><br>
+                    <input type="text" placeholder="ID" name="id" id="id"/>
+                    <input type="password" placeholder="PW" name="pw" id="pw"/>
+                    <div class="button">
+                        <button id="login_button" type="submit">Login</button>
+                    </div>
+                    <br>
+                </form>
+                <div style="display: flex; justify-content: space-between;">
+                    <div class="signup">
+                        <a href="./register.html">Register</a>
+                    </div>
+                    <div class="signup">
+                        <a href="./reset_pw.html">Reset PW</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            document.getElementById("login_button").addEventListener("click", event =>  {
+                event.preventDefault();
+                const id = document.getElementById("id").value;
+                const pw = document.getElementById("pw").value;
+
+                $.post("/api/login", { id, pw }, data => {
+                    // console.log(data);
+                    // console.log(data.success);
+                    // console.log(data.token);
+                    if(data.success===true){
+                        window.location.href = "/good?token="+data.token
+                        // $.get("/good",{id,pw})
+
+                    }
+                    else{
+                        alert(data.message);
+                        // window.location.href = "/good?token="+data.token
+                    }
+                })
+            })
+        </script>
+        <!-- <script>
+            setTimeout(() => {
+                window.location.href = "/test"
+            })
+        </script> -->
+    </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="./reset_pw.css">
+        <title>Reset PW</title>
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class = "reset_box">
+            <div class="reset_pw">
+                <form method="POST" action="/api/reset_pw">
+                <h1>Reset Password</h1><br>
+                <input type="text" placeholder="ID" name="id" id="id"/>
+                <input type="password" placeholder="PW" name="pw" id="pw"/>
+                <input type="password" placeholder="Retype PW" name="pwcheck" id="pwcheck">
+                <input type="email" placeholder="email" name="email" id="email">
+                <div class="button">
+                    <button id = "reset_pw_button" type="submit">Reset</button>
+                </div>
+                </form>
+                <br>
+                <div class="home">
+                    <a href="./login.html">HOME</a>
+                </div>
+            </div>
+        </div>
+        <script>
+                document.getElementById("reset_pw_button").addEventListener("click", event =>  {
+                    event.preventDefault();
+                    const id = document.getElementById("id").value;
+                    const pw = document.getElementById("pw").value;
+                    const pwcheck = document.getElementById("pwcheck").value;
+                    const email=document.getElementById("email").value;
+    
+                    $.post("/api/reset_pw", { id, pw, pwcheck, email }, data => {
+                        // console.log(data);
+                        // console.log(data.success);
+                        // console.log(data.token);
+                        console.log(data);
+                        if(data.success===true){
+                            window.location.href = "/"
+                            // $.get("/good",{id,pw})
+    
+                        }
+                        else{
+                            alert(data.message);
+                            // window.location.href = "/good?token="+data.token
+                        }
+                    })
+                })
+            </script>
+    </body>
+</html>

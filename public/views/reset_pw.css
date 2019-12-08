@@ -1,0 +1,53 @@
+body{
+    background-size: cover;
+    font-family: "나눔고딕";
+    background-color: #151515;
+}
+.reset_box{
+    width: 300px;
+    padding: 50px;
+    background-color: white;
+    margin: 100px auto;
+    border-radius: 30px;
+    overflow: hidden;
+}
+.reset_pw{
+    text-align : center;
+}
+
+.reset_pw input[type=text], input[type=password], input[type=email]{
+    height: 50px;
+    font-size: 16px;
+    width:100%;
+    margin-bottom : 10px;
+    border: none;
+    border-bottom :2px solid gray;
+    padding : 0 8px;
+    box-sizing : border-box;
+}
+
+.home{
+    margin: auto;
+    width: 40%;
+    font-style : gray;
+}
+
+a{
+    text-decoration: none;
+    color: gray;
+}
+
+
+button{ 
+    border: 2px solid gray; 
+    background-color: rgba(0,0,0,0); 
+    color: gray; 
+    padding: 5px;
+    border-radius : 10px;
+    width : 100%;
+    height : 40px;
+    margin : 5px auto;
+    margin-top : 10px;
+    font-size: 16px
+
+}
